@@ -1,0 +1,2 @@
+class InHouseSafeBox < BaseBox
+end

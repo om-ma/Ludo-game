@@ -1,0 +1,2 @@
+class HouseStopBox < BaseBox
+end
