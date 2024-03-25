@@ -1,0 +1,2 @@
+class PublicStopBox < BaseBox
+end

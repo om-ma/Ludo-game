@@ -1,0 +1,2 @@
+class PublicBox < BaseBox
+end
