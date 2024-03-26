@@ -7,10 +7,8 @@ module GameService
       end
   
       def call
-        debugger
         game = Game.new(board: @board)
         game.players << Player.where(id: @player_ids)
-        debugger
         initialize_game_board(game)
         assign_pieces_to_houses(game)
         determine_first_player(game)
@@ -23,7 +21,6 @@ module GameService
         players = game.players
       
         houses = @board.houses
-        debugger
         # Assign each house to a player
         houses.each_with_index do |house, index|
           house.player = players[index]
@@ -43,7 +40,6 @@ module GameService
         houses.each do |house|
           4.times { house.pieces.build }
         end
-        debugger
       end
       
   
@@ -55,7 +51,6 @@ module GameService
         puts "The first player is #{first_player.name}."
       
         first_player
-        debugger
       end
       
     end
