@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_15_075046) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_26_095557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_075046) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
     t.index ["board_id"], name: "index_base_boxes_on_board_id"
   end
 
@@ -56,7 +57,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_075046) do
     t.string "piece"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "player_id"
     t.index ["board_id"], name: "index_houses_on_board_id"
+    t.index ["player_id"], name: "index_houses_on_player_id"
   end
 
   create_table "in_house_safe_boxes", force: :cascade do |t|
@@ -130,6 +133,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_15_075046) do
   add_foreign_key "games", "boards"
   add_foreign_key "house_stop_boxes", "base_boxes"
   add_foreign_key "houses", "boards"
+  add_foreign_key "houses", "players"
   add_foreign_key "in_house_safe_boxes", "base_boxes"
   add_foreign_key "piece_movements", "games"
   add_foreign_key "piece_movements", "pieces"
